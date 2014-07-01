@@ -589,7 +589,7 @@ public class ApnsServiceBuilder {
                 gatewaPort, proxy, proxyUsername, proxyPassword, reconnectPolicy, 
                 delegate, errorDetection, cacheLength, autoAdjustCacheLength, readTimeout, connectTimeout);
         if (pooledMax != 1) {
-            conn = new ApnsPooledConnection(conn, pooledMax, executor);
+            conn = new AnyTalkApnsPooledConnection(conn, pooledMax, executor);
         }
 
         service = new ApnsServiceImpl(conn, feedback);
