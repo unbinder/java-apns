@@ -97,7 +97,6 @@ public class AnyTalkApnsPooledConnection implements ApnsConnection {
     }
 
     private ApnsConnection getConnection(byte[] deviceToken) {
-        int selector = Arrays.hashCode(deviceToken);
-        return connections[(selector < 0 ? -selector : selector) % connections.length];
+        return connections[(Arrays.hashCode(deviceToken) & 0x7fffffff) % connections.length];
     }
 }
